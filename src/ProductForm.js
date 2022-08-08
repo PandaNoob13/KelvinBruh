@@ -1,12 +1,8 @@
-import { useEffect, useState } from "react";
-import { ProductService } from "./ProductService";
+import { useContext, useEffect } from "react";
+import { UserContext, UserProvider } from "./context/state";
 
-const ProductForm = props => {
-    const [isLoading, setIsLoading] = useState(false)
-    const [data, setData] = useState({id: '', productName: ''})
-    const [error, setError] = useState(null)
-    const productService = ProductService();
-
+const ProductForm = () => {
+    const {isLoading, setIsLoading, data, setData, error, setError, productService} = useContext(UserContext);
     const handleOnInput = (e) => {
         const key = e.target.key;
         const value = e.target.value;
@@ -43,12 +39,14 @@ const ProductForm = props => {
 
         return(
             <div>
-                <label>ID</label>
-                <input name="id" type='text' value={data.id} onChange={handleOnInput}></input>
-                <label>Product Name</label>
-                <input name="productName" type='text' value={data.productName} onChange={handleOnInput}></input>
-                <button disabled={isLoading} onClick={handleSaveProduct}>Save</button>
-                {error && <div>Oops {error}</div>}
+                <UserProvider>
+                    <label>ID</label>
+                    <input name="id" type='text' value={data.id} onChange={handleOnInput}></input>
+                    <label>Product Name</label>
+                    <input name="productName" type='text' value={data.productName} onChange={handleOnInput}></input>
+                    <button disabled={isLoading} onClick={handleSaveProduct}>Save</button>
+                    {error && <div>Oops {error}</div>}
+                </UserProvider>
             </div>
         )
 }
