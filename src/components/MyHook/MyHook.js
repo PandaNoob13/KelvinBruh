@@ -1,13 +1,16 @@
 import useMyHook from "./UseMyHook";
+import "./myHook.css"
 
 const MyHook = () => {
     const {
         result, number, onButtonPressed
     } = useMyHook()
     return (
-        <div>
-            <h2>result: {result}</h2>
-            <div>
+        <div className="calculator">
+            <div className="screen">
+                <h3>Result : {result}</h3>
+            </div>
+            <div style={{marginTop: '20px'}}>
                 <button onClick={() => onButtonPressed('9')}>9</button>
                 <button onClick={() => onButtonPressed('8')}>8</button>
                 <button onClick={() => onButtonPressed('7')}>7</button>

@@ -1,3 +1,4 @@
+import { clear } from "@testing-library/user-event/dist/clear";
 import { useEffect, useState } from "react"
 
 const useMyHook = () => {
@@ -6,8 +7,10 @@ const useMyHook = () => {
     const [userInput, setUserInput] = useState('');
     const [prevOperator, setPrevOperator] = useState('');
     const onButtonPressed = (e) => {
-        if (e == '+' || e == '-' || e == '*' || e == '/' || e == '='){
-            if (result == ''){
+        if (e == '+' || e == '-' || e == '*' || e == '/' || e == '=' || e == 'C'){
+            if (e == 'C') {
+                clear()
+            } else if (result == ''){
                 setResult(parseInt(number))
             } else {
                 switch(prevOperator){
@@ -28,11 +31,9 @@ const useMyHook = () => {
             setNumber(0)
             setPrevOperator(e)
         } else {
-            setUserInput(userInput + e)
             setNumber(number + e)
         }
-        console.log(userInput);
-        console.log(number);
+        setUserInput(userInput + e)
     }
     const add = () => {
         setResult(result + parseInt(number))
@@ -46,6 +47,12 @@ const useMyHook = () => {
     const div = () => [
         setResult(result / parseInt(number))
     ]
+    const clear = () => {
+        setNumber(0);
+        setResult('')
+        setPrevOperator('')
+        setUserInput('')
+    }
     return {
         result, number, onButtonPressed
     }
