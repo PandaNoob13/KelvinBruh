@@ -1,19 +1,14 @@
-import { createContext } from "react";
-import { useState } from "react";
-import { ProductService } from "../ProductService";
+import { createContext, useContext } from "react";
 
 const UserContext = createContext()
-
-const UserProvider = ({children}) => {
-    const [isLoading, setIsLoading] = useState(false)
-    const [data, setData] = useState({id: '', productName: ''})
-    const [error, setError] = useState(null)
-    const productService = ProductService();
-
+const UserProvider = ({children, service}) => {
     return (
-        <UserContext.Provider value={{isLoading, setIsLoading, data, setData, error, setError, productService}}>
+        <UserContext.Provider value={{service}}>
             {children}
         </UserContext.Provider>
     )
+}
+export function useHookContext(){
+    return useContext(UserContext)
 }
 export {UserContext, UserProvider} 
