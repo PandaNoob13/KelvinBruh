@@ -6,30 +6,25 @@ const UseJsonPlaceHolder = () => {
     const {jsonPlaceHolderService} = useDeps();
     const [isLoading, setLoading] = useState(false);
     const [posts, setPosts] = useState({});
-    useEffect( () => {
-        onGetPostById();
-    }, [])
-    const onGetPostById = async () => {
-        setLoading(true);
-        try {
-            const response = await jsonPlaceHolderService.getPostById('1')
-            setPosts(response)
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setLoading(false)
+    useEffect(()=>{
+        console.log(posts);
+        if (posts.token != null){
+            console.log(posts.token);
+            localStorage.setItem("token", posts.token)
         }
-    }
-
+    }, [posts])
     const onCreatePost = async () => {
         setLoading(true);
         try {
             const response = await jsonPlaceHolderService.createPost({
-                title: 'Hello Samuel', 
-                body: 'Yoiii'
+                username: 'admin', 
+                password: '1234'
             });
             setPosts(response)
         } catch (error) {
+            setPosts({
+                status: "UNAUTHORIZED"
+            })
         } finally {
             setLoading(false);
         }

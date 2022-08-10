@@ -1,23 +1,15 @@
 import React from "react";
 
-export const jsonPlaceHolderService = ({doGet, doPost}) => {
-    const getPostById = async (id) => {
-        try {
-            return await doGet({url: '/posts/' + id});
-        } catch (error) {
-            console.log(error);
-            throw error
-        }
-    }
+export const jsonPlaceHolderService = ({doPost}) => {
     const createPost = async (newPost) => {
         try {
             return await doPost({
-                url: '/posts', data: newPost
+                url: '/login', data: newPost
             })
         } catch (error) {
             console.log(error);
             throw error
         }
     }
-    return {getPostById, createPost};
+    return {createPost};
 }
