@@ -4,11 +4,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { apiClientFactory } from './shared/ApiClientFactory';
+import { clientInstance } from './shared/AxiosClient';
+import { ServiceFactory } from './services/ServiceFactory';
+import { DepProvider } from './shared/DepContext';
 
+const apiClient = apiClientFactory(clientInstance)
+const services = ServiceFactory(apiClient)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <DepProvider services={services}>
       <App />
+    </DepProvider>
   </React.StrictMode>
 );
 
