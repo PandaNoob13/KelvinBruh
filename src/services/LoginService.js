@@ -1,6 +1,6 @@
 import React from "react";
 
-export const jsonPlaceHolderService = ({doPost}) => {
+export const loginService = ({doPost}) => {
     const createPost = async (newPost) => {
         try {
             return await doPost({

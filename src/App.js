@@ -1,5 +1,5 @@
 import './App.css';
-import JsonPlaceHolderView from './features/JsonPlaceHolder/JsonPlaceHolderView';
+import JsonPlaceHolderView from './features/JsonPlaceHolder/LoginView';
 
 const App = () => {
   return (

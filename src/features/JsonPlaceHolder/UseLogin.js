@@ -3,7 +3,7 @@ import { useDeps } from "../../shared/DepContext";
 import { useEffect } from "react";
 
 const UseJsonPlaceHolder = () => {
-    const {jsonPlaceHolderService} = useDeps();
+    const {loginService} = useDeps();
     const [isLoading, setLoading] = useState(false);
     const [posts, setPosts] = useState({});
     useEffect(()=>{
@@ -11,12 +11,14 @@ const UseJsonPlaceHolder = () => {
         if (posts.token != null){
             console.log(posts.token);
             localStorage.setItem("token", posts.token)
+        } else {
+            localStorage.removeItem("token")
         }
     }, [posts])
     const onCreatePost = async () => {
         setLoading(true);
         try {
-            const response = await jsonPlaceHolderService.createPost({
+            const response = await loginService.createPost({
                 username: 'admin', 
                 password: '1234'
             });

@@ -1,7 +1,7 @@
-import { jsonPlaceHolderService } from "./JsonPlaceHolderService"
+import { loginService } from "./LoginService"
 
 export const ServiceFactory = (apiClient) => {
     return{
-        jsonPlaceHolderService: jsonPlaceHolderService(apiClient)
+        loginService: loginService(apiClient)
     }
 }

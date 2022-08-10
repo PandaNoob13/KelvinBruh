@@ -1,8 +1,8 @@
 import React from "react";
-import UseJsonPlaceHolder from "./UseJsonPlaceHolder";
+import UseLogin from "./UseLogin";
 
-const JsonPlaceHolderView = () => {
-    const {isLoading, posts, onCreatePost} = UseJsonPlaceHolder();
+const LoginView = () => {
+    const {isLoading, posts, onCreatePost} = UseLogin();
     return (
         <div>
             <h2>{posts.status}</h2>
@@ -11,4 +11,4 @@ const JsonPlaceHolderView = () => {
         </div>
     )
 }
-export default JsonPlaceHolderView;
+export default LoginView;
