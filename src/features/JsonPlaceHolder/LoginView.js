@@ -7,7 +7,7 @@ const LoginView = () => {
     return (
         <div>
             <input id="username" placeholder="username" value={username} onChange={handleUsernameChange}/><br/>
-            <input id="password" placeholder="password" value={password} onChange={handlePasswordChange}/>
+            <input id="password" type="password" placeholder="password" value={password} onChange={handlePasswordChange}/>
             <h2>{posts.status}</h2>
             <p>{posts.token}</p>
             <button disabled={isLoading} onClick={onCreatePost}>Login</button>
