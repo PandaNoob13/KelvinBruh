@@ -1,0 +1,1 @@
+{"openapi":"3.0.0","info":{"title":"Challenge login api","version":"1.0.0"},"servers":[{"url":"http://localhost:5000/"}],"paths":{"/login":{"post":{"description":"Generate token value","responses":{"200":{"description":"","content":{"application/json":{}},"headers":{}},"401":{"description":"","content":{"application/json":{}},"headers":{}}}}}}}

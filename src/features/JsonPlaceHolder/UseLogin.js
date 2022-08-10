@@ -6,6 +6,8 @@ const UseJsonPlaceHolder = () => {
     const {loginService} = useDeps();
     const [isLoading, setLoading] = useState(false);
     const [posts, setPosts] = useState({});
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     useEffect(()=>{
         console.log(posts);
         if (posts.token != null){
@@ -17,10 +19,14 @@ const UseJsonPlaceHolder = () => {
     }, [posts])
     const onCreatePost = async () => {
         setLoading(true);
+        let username = 'admin';
+        let password = '1234'
+        setUsername(username)
+        setPassword(password)
         try {
             const response = await loginService.createPost({
-                username: 'admin', 
-                password: '1234'
+                username: username, 
+                password: password
             });
             setPosts(response)
         } catch (error) {
@@ -32,7 +38,7 @@ const UseJsonPlaceHolder = () => {
         }
     }
     return {
-        isLoading, posts, onCreatePost
+        isLoading, posts, onCreatePost, username, password
     }
 }
 export default UseJsonPlaceHolder;
